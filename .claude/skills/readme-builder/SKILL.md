@@ -2,7 +2,7 @@
 name: readme-builder
 description: >
   Write or update the README.md for a GitLab project, and set the GitLab project's
-  Description and Topics so the project shows up correctly on the flynnsol.dev Projects
+  Description and Topics so the project shows up correctly on the flynnsol.com Projects
   page (which pulls name, description, topics, stars, and last-activity live from the
   GitLab API). Use this whenever the user is publishing a new project to GitLab, asks
   to "make a README", "write up this project", "add topics/tags" or "tag this with the
@@ -14,7 +14,7 @@ description: >
 # README Builder
 
 Every public GitLab project under the `flynnsol` account is meant to double as a
-card on the flynnsol.dev Projects page. `flynnsol/states/projects_state.py` fetches
+card on the flynnsol.com Projects page. `flynnsol/states/projects_state.py` fetches
 the GitLab API directly and reads exactly these fields:
 
 | Website shows        | GitLab API field       | Where it comes from                  |

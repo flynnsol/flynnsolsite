@@ -8,7 +8,7 @@ Flynn Sol's personal portfolio site — resume, blog, and projects, built with [
 
 ## Description
 
-This is the source for [flynnsol.dev](https://flynnsol.dev) — a full-stack Python site built entirely with Reflex, no separate frontend framework. It exists both as a personal site and as a live demo of the stack: the Projects page fetches directly from the GitLab API at request time, so this repo showing up there is the project working as intended.
+This is the source for [flynnsol.com](https://flynnsol.com) — a full-stack Python site built entirely with Reflex, no separate frontend framework. It exists both as a personal site and as a live demo of the stack: the Projects page fetches directly from the GitLab API at request time, so this repo showing up there is the project working as intended.
 
 ## Features
 
