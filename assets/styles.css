@@ -1,0 +1,94 @@
+/* Hero: the two logo halves converge into place on load. */
+@keyframes hero-half-up {
+  from {
+    opacity: 0;
+    transform: translate(-24px, -24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes hero-half-down {
+  from {
+    opacity: 0;
+    transform: translate(24px, 24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.hero-half-up {
+  animation: hero-half-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-half-down {
+  animation: hero-half-down 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.15s;
+}
+
+/* Resume timeline / generic list items: stagger fade-up on page load. */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Nav active-route underline. */
+@keyframes underline-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.nav-underline {
+  transform-origin: left;
+  animation: underline-grow 0.25s ease both;
+}
+
+/* Footer social links: icon + label animate to gold together on hover.
+   The icon/text set their own literal `color` inline, so an ordinary
+   descendant rule can't out-specificity them — !important is required
+   to win over an inline style. */
+.social-link,
+.social-link * {
+  transition: color 0.2s ease;
+}
+
+.social-link:hover,
+.social-link:hover * {
+  color: #d9a34b !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-half-up,
+  .hero-half-down,
+  .fade-in-up,
+  .nav-underline {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .social-link,
+  .social-link * {
+    transition: none !important;
+  }
+}
