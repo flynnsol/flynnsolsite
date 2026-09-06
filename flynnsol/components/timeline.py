@@ -28,12 +28,14 @@ def _role(role: Role, delay: float) -> rx.Component:
             ),
             width="100%",
             align="baseline",
+            spacing="3",
         ),
         rx.list.unordered(
             *[rx.list.item(b, color=TEXT_CC, size="3") for b in role.bullets],
             margin_top="0.5em",
             spacing="1",
         ),
+        width="100%",
         margin_bottom="1.25em",
         class_name="fade-in-up",
         style={"--delay": f"{delay}s"},
@@ -70,6 +72,7 @@ def timeline_entry(block: CompanyBlock, index: int) -> rx.Component:
         border_left=f"2px solid {GOLD}33",
         padding_left="1.5em",
         margin_bottom="2em",
+        width="100%",
         class_name="fade-in-up",
         style={"--delay": f"{index * 0.12}s"},
     )
