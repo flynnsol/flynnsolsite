@@ -76,6 +76,7 @@ RESUME = ResumeData(
         "Rust",
         "Java",
         "Usage-Based Billing",
+        "Stripe",
         "SQL",
         "Git",
         "Linux",

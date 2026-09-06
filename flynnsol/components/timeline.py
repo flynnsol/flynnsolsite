@@ -11,13 +11,20 @@ from ..styles import GOLD, TEXT, TEXT_77, TEXT_CC
 def _role(role: Role, delay: float) -> rx.Component:
     return rx.box(
         rx.hstack(
-            rx.text(role.title, weight="bold", color=TEXT, size="4"),
-            rx.spacer(),
+            rx.text(
+                role.title,
+                weight="bold",
+                color=TEXT,
+                size="4",
+                flex="1",
+                min_width="0",
+            ),
             rx.text(
                 f"{role.start} – {role.end}",
                 color=GOLD,
                 size="2",
                 white_space="nowrap",
+                flex_shrink="0",
             ),
             width="100%",
             align="baseline",

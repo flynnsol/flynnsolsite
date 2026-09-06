@@ -1,0 +1,10 @@
+.git
+.venv
+.web
+!reflex.lock
+__pycache__
+*.py[cod]
+.states
+*.db
+reflex.log
+assets/external/
