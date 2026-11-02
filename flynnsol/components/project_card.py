@@ -1,4 +1,4 @@
-"""GitLab project card, plus a matching skeleton for the loading state.
+"""GitHub project card, plus a matching skeleton for the loading state.
 
 `project` is a State-backed dict Var (from ProjectsState.projects), normalized
 in ProjectsState.load_projects to always have: name, description, url, stars,
@@ -43,7 +43,7 @@ def project_card(project: rx.Var) -> rx.Component:
                     ),
                     rx.spacer(),
                     rx.hstack(
-                        rx.text("View on GitLab", size="2", color=GOLD),
+                        rx.text("View on GitHub", size="2", color=GOLD),
                         rx.icon("arrow-up-right", size=14, color=GOLD),
                         spacing="1",
                         align="center",

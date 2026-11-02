@@ -8,11 +8,11 @@ Flynn Sol's personal portfolio site — resume, blog, and projects, built with [
 
 ## Description
 
-This is the source for [flynnsol.com](https://flynnsol.com) — a full-stack Python site built entirely with Reflex, no separate frontend framework. It exists both as a personal site and as a live demo of the stack: the Projects page fetches directly from the GitLab API at request time, so this repo showing up there is the project working as intended.
+This is the source for [flynnsol.com](https://flynnsol.com) — a full-stack Python site built entirely with Reflex, no separate frontend framework. It exists both as a personal site and as a live demo of the stack: the Projects page fetches directly from the GitHub API at request time, so this repo showing up there is the project working as intended.
 
 ## Features
 
-- **Live Projects page** — pulls name, description, topics, stars, and last-activity straight from the GitLab API, no manual syncing.
+- **Live Projects page** — pulls name, description, topics, stars, and last-activity straight from the GitHub API, no manual syncing.
 - **File-based blog** — posts are markdown with frontmatter, parsed once at import time and filterable by tag.
 - **Resume page** — structured work history/skills data rendered as a page, shared with the home page bio.
 - **Light/dark theme** with a custom Radix Themes palette (amber accent, slate gray).
@@ -45,7 +45,7 @@ The app serves the frontend at `http://localhost:3000` and the backend at `http:
 
 - **[Reflex](https://reflex.dev)** — Python framework compiling to a React frontend + FastAPI backend, single codebase.
 - **Tailwind CSS v4** and **Radix Themes**, via Reflex plugins.
-- **httpx** for the live GitLab API calls behind the Projects page.
+- **httpx** for the live GitHub API calls behind the Projects page.
 - **python-frontmatter** for parsing the markdown blog posts.
 
 ## License

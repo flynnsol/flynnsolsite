@@ -1,0 +1,22 @@
+name: Deploy to Fly.io
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy
+        env:
+          FLY_API_TOKEN_B64: ${{ secrets.FLY_API_TOKEN_B64 }}
+        run: |
+          export FLY_API_TOKEN=$(echo "$FLY_API_TOKEN_B64" | base64 -d)
+          flyctl deploy --remote-only --config fly.toml

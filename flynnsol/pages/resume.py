@@ -31,11 +31,6 @@ def resume() -> rx.Component:
                 href=f"https://{RESUME.github}",
                 is_external=True,
             ),
-            rx.link(
-                rx.button("GitLab", variant="surface", style=outline_button_hover),
-                href=f"https://{RESUME.gitlab}",
-                is_external=True,
-            ),
             spacing="3",
             margin_bottom="2.5em",
             wrap="wrap",

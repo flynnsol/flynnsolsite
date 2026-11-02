@@ -1,7 +1,7 @@
-"""GitLab project fetch for the Projects page.
+"""GitHub project fetch for the Projects page.
 
 Loading/error/empty states are handled explicitly so a network hiccup (or the
-fact that this repo is currently the only public GitLab project) never
+fact that this repo is currently the only public GitHub project) never
 crashes the page.
 """
 
@@ -11,9 +11,9 @@ from typing import TypedDict
 import httpx
 import reflex as rx
 
-GITLAB_USERNAME = "flynnsol"
-GITLAB_API_URL = f"https://gitlab.com/api/v4/users/{GITLAB_USERNAME}/projects"
-GITLAB_PROFILE_URL = f"https://gitlab.com/{GITLAB_USERNAME}"
+GITHUB_USERNAME = "flynnsol"
+GITHUB_API_URL = f"https://api.github.com/users/{GITHUB_USERNAME}/repos"
+GITHUB_PROFILE_URL = f"https://github.com/{GITHUB_USERNAME}"
 
 
 class ProjectDict(TypedDict):
@@ -44,7 +44,7 @@ def _relative_time(iso_timestamp: str) -> str:
 
 
 class ProjectsState(rx.State):
-    """Public GitLab projects, fetched live on page load."""
+    """Public GitHub repos, fetched live on page load."""
 
     projects: list[ProjectDict] = []
     is_loading: bool = True
@@ -58,8 +58,9 @@ class ProjectsState(rx.State):
         try:
             async with httpx.AsyncClient(timeout=8.0) as client:
                 resp = await client.get(
-                    GITLAB_API_URL,
-                    params={"order_by": "last_activity_at", "visibility": "public"},
+                    GITHUB_API_URL,
+                    params={"type": "owner", "sort": "pushed", "per_page": 100},
+                    headers={"Accept": "application/vnd.github+json"},
                 )
                 resp.raise_for_status()
                 raw_projects = resp.json()
@@ -71,12 +72,13 @@ class ProjectsState(rx.State):
                 {
                     "name": p.get("name", "Untitled"),
                     "description": p.get("description") or "No description yet.",
-                    "url": p.get("web_url", GITLAB_PROFILE_URL),
-                    "stars": p.get("star_count", 0),
-                    "updated": _relative_time(p.get("last_activity_at", "")),
-                    "topics": p.get("topics") or p.get("tag_list") or [],
+                    "url": p.get("html_url", GITHUB_PROFILE_URL),
+                    "stars": p.get("stargazers_count", 0),
+                    "updated": _relative_time(p.get("pushed_at", "")),
+                    "topics": p.get("topics") or [],
                 }
                 for p in raw_projects
+                if not p.get("fork") and not p.get("archived")
             ]
         finally:
             self.is_loading = False

@@ -1,4 +1,4 @@
-"""Projects page: live GitLab-sourced project cards, with explicit
+"""Projects page: live GitHub-sourced project cards, with explicit
 loading / error / empty states so the page never breaks on a network hiccup
 or on the (currently true) fact that there are zero public repos yet.
 """
@@ -6,7 +6,7 @@ or on the (currently true) fact that there are zero public repos yet.
 import reflex as rx
 
 from ..components.project_card import project_card, project_card_skeleton
-from ..states.projects_state import GITLAB_PROFILE_URL, ProjectsState
+from ..states.projects_state import GITHUB_PROFILE_URL, ProjectsState
 from ..styles import GOLD, TEXT, TEXT_99, outline_button_hover
 from ..template import template
 
@@ -16,17 +16,17 @@ def _empty_state() -> rx.Component:
         rx.icon("folder_git_2", size=40, color=GOLD),
         rx.heading("No public projects yet", size="5", color=TEXT),
         rx.text(
-            "This site is the first one — check back soon, or see what's cooking on GitLab.",
+            "This site is the first one — check back soon, or see what's cooking on GitHub.",
             color=TEXT_99,
             text_align="center",
         ),
         rx.link(
             rx.button(
-                "Visit GitLab profile",
+                "Visit GitHub profile",
                 variant="surface",
                 style=outline_button_hover,
             ),
-            href=GITLAB_PROFILE_URL,
+            href=GITHUB_PROFILE_URL,
             is_external=True,
         ),
         spacing="3",
@@ -39,7 +39,7 @@ def _empty_state() -> rx.Component:
 def _error_state() -> rx.Component:
     return rx.vstack(
         rx.icon("wifi_off", size=40, color=GOLD),
-        rx.heading("Couldn't reach GitLab", size="5", color=TEXT),
+        rx.heading("Couldn't reach GitHub", size="5", color=TEXT),
         rx.text(
             "Something went wrong fetching projects — try again in a moment.",
             color=TEXT_99,
@@ -67,7 +67,7 @@ def projects() -> rx.Component:
     return rx.vstack(
         rx.heading("Projects", size="8", color=TEXT),
         rx.text(
-            "Pulled live from my GitLab profile.",
+            "Pulled live from my GitHub profile.",
             color=TEXT_99,
             margin_bottom="1.5em",
         ),

@@ -38,7 +38,6 @@ class ResumeData:
     title: str
     email: str
     github: str
-    gitlab: str
     status: str
     summary: str
     short_bio: str
@@ -53,7 +52,6 @@ RESUME = ResumeData(
     title="Software Engineer",
     email="hello@flynnsol.com",
     github="github.com/flynnsol",
-    gitlab="gitlab.com/flynnsol",
     status="Open to work — remote / hybrid",
     summary=(
         "Software Engineer with a 4-year track record inside Huntress's IT and "
